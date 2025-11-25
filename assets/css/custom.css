@@ -27,7 +27,7 @@ h1 {
 
 h2 {
     font-size: 2rem;
-    color: #50f42f;
+    color: #afaf0b;
     font-weight: 700;
     border-bottom: 3px solid #f4ae22;
     padding-bottom: 0.2em;
@@ -35,20 +35,20 @@ h2 {
 
 h3 {
     font-size: 1.6rem;
-    color: #0022ff;
+    color: #070e39;
     font-weight: 600;
 }
 
 h4 {
     font-size: 1.3rem;
-    color: #1b5fa2;
+    color: #0f345a;
     font-weight: 600;
     text-transform: uppercase;
 }
 
 h5 {
     font-size: 1.1rem;
-    color: #f37500;
+    color: #afaf0b;
     font-weight: 500;
 }
 
@@ -384,3 +384,239 @@ a:active {
 .services-table tbody tr {
     border-bottom: 1px solid rgba(148, 163, 184, 0.6);
 }
+
+
+
+
+@keyframes fadeInSection {
+    0% {
+        opacity: 0;
+        transform: translateY(25px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes iconFloat {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-6px); }
+    100% { transform: translateY(0); }
+}
+
+section, #about, #resume, #portfolio {
+    opacity: 0;
+    animation: fadeInSection 1.2s ease forwards;
+}
+
+#header .social-links a {
+    animation: iconFloat 3s ease-in-out infinite;
+}
+
+
+#preloader {
+    position: fixed;
+    inset: 0;
+    background: #0f172a;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+}
+
+@keyframes spinLoader {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.preloader-spinner {
+    width: 60px;
+    height: 60px;
+    border: 6px solid #64748b;
+    border-top-color: #22c55e;
+    border-radius: 50%;
+    animation: spinLoader 1s linear infinite;
+}
+
+body.loaded #preloader {
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.4s ease;
+}
+
+
+@media (prefers-reduced-motion: reduce) {
+
+    * {
+        animation: none !important;
+        transition: none !important;
+        scroll-behavior: auto !important;
+    }
+
+    section {
+        opacity: 1 !important;
+        transform: none !important;
+    }
+
+    #preloader {
+        display: none !important;
+    }
+}
+
+
+
+/* -----------------------------
+   SERVICES: animuotas gradient fonas
+   ----------------------------- */
+#services {
+  position: relative;
+  overflow: hidden; 
+  z-index: 0;
+}
+
+#services::before{
+  content: "";
+  position: absolute;
+  inset: -20% -10% -20% -10%;
+  z-index: -1;
+  background: linear-gradient(120deg, #0ea5e9 0%, #8b5cf6 25%, #f472b6 50%, #f59e0b 75%, #34d399 100%);
+  background-size: 300% 300%;
+  filter: saturate(1.05) contrast(1.02);
+  animation: servicesGradient 12s ease infinite;
+  opacity: 0.18;
+  transform: translateZ(0);
+}
+
+@keyframes servicesGradient {
+  0% { background-position: 0% 50%; transform: scale(1); }
+  25% { background-position: 50% 25%; transform: scale(1.02); }
+  50% { background-position: 100% 50%; transform: scale(1); }
+  75% { background-position: 50% 75%; transform: scale(0.99); }
+  100% { background-position: 0% 50%; transform: scale(1); }
+}
+
+#services::after{
+  content: "";
+  position: absolute;
+  inset: -40% -40% -40% -40%;
+  z-index: -2;
+  background: radial-gradient(circle at 10% 20%, rgba(255,255,255,0.02), transparent 10%),
+              radial-gradient(circle at 90% 80%, rgba(0,0,0,0.02), transparent 10%);
+  animation: servicesPulse 8s ease-in-out infinite;
+  opacity: 1;
+}
+@keyframes servicesPulse {
+  0%,100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.03); opacity: 0.9; }
+}
+
+/* -----------------------------
+   ABOUT: dekoratyvinės CSS figūros + animacijos
+   ----------------------------- */
+
+.about { position: relative; overflow: visible; }
+
+.about .decor-shapes {
+  position: absolute;
+  inset: 0; 
+  pointer-events: none; 
+  z-index: 0;
+}
+
+
+.about .decor-shapes .shape {
+  position: absolute;
+  opacity: 0.12;
+  mix-blend-mode: screen;
+  filter: blur(0.2px);
+  transform-origin: center;
+}
+
+.about .decor-shapes .shape.circle {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 30%, #34d399, #10b981);
+  left: 5%;
+  top: 12%;
+  animation: floatY 8s ease-in-out infinite, rotateSlow 18s linear infinite;
+}
+
+.about .decor-shapes .shape.triangle {
+  width: 0;
+  height: 0;
+  border-left: 48px solid transparent;
+  border-right: 48px solid transparent;
+  border-bottom: 86px solid rgba(99,102,241,0.95);
+  left: 78%;
+  top: 10%;
+  opacity: 0.10;
+  transform-origin: 50% 60%;
+  animation: floatX 7.5s ease-in-out infinite alternate, rotateSlow 14s linear infinite;
+}
+
+.about .decor-shapes .shape.box {
+  width: 100px;
+  height: 100px;
+  background: linear-gradient(135deg,#e99559,#cf7885);
+  left: 46%;
+  top: 12%;
+  border-radius: 12px;
+  animation: scalePulse 6s ease-in-out infinite, rotateSlow 20s linear infinite;
+}
+
+/* mažesnis apskritimas */
+.about .decor-shapes .shape.dot {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: linear-gradient(90deg,#60a5fa,#7c3aed);
+  left: 5%;
+  top: 12%;
+  animation: floatY 5.5s ease-in-out infinite;
+}
+
+/* ANIMACIJŲ @keyframes */
+@keyframes floatY {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-18px); }
+  100% { transform: translateY(0); }
+}
+@keyframes floatX {
+  0% { transform: translateX(0); }
+  50% { transform: translateX(-20px); }
+  100% { transform: translateX(0); }
+}
+@keyframes scalePulse {
+  0% { transform: scale(1); opacity: 0.9; }
+  50% { transform: scale(1.12); opacity: 1; }
+  100% { transform: scale(1); opacity: 0.9; }
+}
+@keyframes rotateSlow {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* užtikrink kad turinio tekstas būtų virš figūrų */
+.about .container,
+.about .row,
+.about .content {
+  position: relative;
+  z-index: 1;
+}
+
+/* -----------------------------
+   prefers-reduced-motion
+   ----------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  #services::before,
+  #services::after,
+  .about .decor-shapes .shape,
+  .about .decor-shapes {
+    animation: none !important;
+    transition: none !important;
+    opacity: 0.08 !important;
+  }
+}
+

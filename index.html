@@ -33,6 +33,11 @@
 
 <body class="index-page">
 
+  <div id="preloader">
+    <div class="preloader-spinner"></div>
+  </div>
+
+
   <header id="header" class="header dark-background d-flex flex-column">
     <i class="header-toggle d-xl-none bi bi-list"></i>
 
@@ -100,6 +105,14 @@
 
     <!-- About Section -->
     <section id="about" class="about section">
+
+      <!-- dekoratyvinės figūros About sekcijoje -->
+      <div class="decor-shapes" aria-hidden="true">
+        <div class="shape circle"></div>
+        <div class="shape triangle"></div>
+        <div class="shape box"></div>
+        <div class="shape dot"></div>
+      </div>
 
       <!-- Section Title -->
       <div class="container section-title" data-aos="fade-up">
@@ -393,10 +406,13 @@
     <!-- Services Section -->
     <section id="services" class="services section">
 
+      <div class="services-bg"></div>
+
       <div class="container section-title" data-aos="fade-up">
         <h2>Paslaugos</h2>
         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam, ullam. Rerum deserunt quisquam repudiandae itaque quis tempore hic culpa temporibus est quod animi ab, cupiditate, recusandae id. Beatae, veniam doloribus?</p>
-      </div><div class="container">
+      </div>
+      <div class="container">
 
         <div class="row gy-4">
 
@@ -508,6 +524,13 @@
 
   <!-- Main JS File -->
   <script src="assets/js/main.js"></script>
+
+
+  <script>
+    window.addEventListener("load", () => {
+        document.body.classList.add("loaded");
+    });
+  </script>
 
 </body>
 
