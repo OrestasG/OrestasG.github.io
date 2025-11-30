@@ -464,11 +464,6 @@ body.loaded #preloader {
     }
 }
 
-
-
-/* -----------------------------
-   SERVICES: animuotas gradient fonas
-   ----------------------------- */
 #services {
   position: relative;
   overflow: hidden; 
@@ -510,10 +505,6 @@ body.loaded #preloader {
   0%,100% { transform: scale(1); opacity: 1; }
   50% { transform: scale(1.03); opacity: 0.9; }
 }
-
-/* -----------------------------
-   ABOUT: dekoratyvinės CSS figūros + animacijos
-   ----------------------------- */
 
 .about { position: relative; overflow: visible; }
 
@@ -566,7 +557,6 @@ body.loaded #preloader {
   animation: scalePulse 6s ease-in-out infinite, rotateSlow 20s linear infinite;
 }
 
-/* mažesnis apskritimas */
 .about .decor-shapes .shape.dot {
   width: 26px;
   height: 26px;
@@ -577,7 +567,6 @@ body.loaded #preloader {
   animation: floatY 5.5s ease-in-out infinite;
 }
 
-/* ANIMACIJŲ @keyframes */
 @keyframes floatY {
   0% { transform: translateY(0); }
   50% { transform: translateY(-18px); }
@@ -598,7 +587,6 @@ body.loaded #preloader {
   100% { transform: rotate(360deg); }
 }
 
-/* užtikrink kad turinio tekstas būtų virš figūrų */
 .about .container,
 .about .row,
 .about .content {
@@ -606,9 +594,7 @@ body.loaded #preloader {
   z-index: 1;
 }
 
-/* -----------------------------
-   prefers-reduced-motion
-   ----------------------------- */
+
 @media (prefers-reduced-motion: reduce) {
   #services::before,
   #services::after,
@@ -620,3 +606,88 @@ body.loaded #preloader {
   }
 }
 
+
+#contactForm { 
+    max-width:700px; 
+    margin:1rem auto; 
+    padding:1rem; 
+    background:#fff; 
+    border-radius:8px; 
+    box-shadow:0 2px 6px rgba(0,0,0,0.05); 
+}
+
+.form-row { 
+    display:flex; 
+    flex-direction:column; 
+    margin-bottom:0.75rem; 
+}
+
+label { 
+    font-weight:600; 
+    margin-bottom:0.25rem; 
+}
+
+input[type="text"], input[type="email"], input[type="tel"], output { 
+    padding:0.5rem; 
+    border:1px solid #ddd; 
+    border-radius:6px; 
+}
+
+input:focus { 
+    outline:2px solid rgba(0,120,212,0.15); 
+}
+
+.error { 
+    color:#b00020; 
+    font-size:0.9rem; 
+    min-height:1.1em; 
+}
+
+input.invalid { 
+    border-color:#b00020; 
+}
+
+.ratings label { 
+    display:flex; 
+    align-items:center; 
+    gap:0.5rem; 
+    margin-bottom:0.5rem; 
+}
+
+#submitBtn[disabled] { 
+    opacity:0.5; 
+    cursor:not-allowed; 
+}
+
+/* Rezultato dėžė */
+#resultArea .result-box { 
+    background:#f6f3ec; 
+    padding:1rem; 
+    border-radius:6px; 
+    margin-top:1rem; 
+    font-weight:600; 
+}
+
+/* Pop-up */
+.popup { 
+    position:fixed; 
+    left:0; 
+    right:0; 
+    top:0; 
+    bottom:0; 
+    display:flex; 
+    align-items:center; 
+    justify-content:center; 
+    background:rgba(0,0,0,0.35); 
+}
+
+.popup.hidden { 
+    display:none; 
+}
+
+.popup-inner { 
+    background:#fff; 
+    padding:1.25rem 1.5rem; 
+    border-radius:8px; 
+    box-shadow:0 6px 24px rgba(0,0,0,0.2); 
+}

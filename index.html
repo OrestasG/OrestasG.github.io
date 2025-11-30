@@ -484,6 +484,96 @@
 
     </section><!-- /Services Section -->
 
+        <!-- Contact Section -->
+    <section id="contact" class="contact section">
+
+      <!-- Section Title -->
+      <div class="container section-title" data-aos="fade-up">
+        <h2>Contact</h2>
+        <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit</p>
+      </div><!-- End Section Title -->
+
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+        <div class="row gy-4">
+        <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
+            
+            <form id="contactForm" novalidate>
+              <div class="form-row">
+                <label for="name">Vardas</label>
+                <input id="name" name="name" type="text" required />
+                <small class="error" data-for="name"></small>
+              </div>
+
+              <div class="form-row">
+                <label for="surname">Pavardė</label>
+                <input id="surname" name="surname" type="text" required />
+                <small class="error" data-for="surname"></small>
+              </div>
+
+              <div class="form-row">
+                <label for="email">El. paštas</label>
+                <input id="email" name="email" type="email" required />
+                <small class="error" data-for="email"></small>
+              </div>
+
+              <div class="form-row">
+                <label for="phone">Telefone</label>
+                <input id="phone" name="phone" type="tel" inputmode="numeric" required />
+                <small class="error" data-for="phone"></small>
+              </div>
+
+              <div class="form-row">
+                <label for="address">Adresas</label>
+                <input id="address" name="address" type="text" required />
+                <small class="error" data-for="address"></small>
+              </div>
+
+              <fieldset class="ratings">
+                <legend>Įvertinimai (1–10)</legend>
+
+                <label>1. Kaip vertinate dizainą?
+                  <input type="range" min="1" max="10" value="5" id="r1" name="r1" />
+                  <output for="r1" id="r1Out">5</output>
+                </label>
+
+                <label>2. Kaip vertinate funkcionalumą?
+                  <input type="range" min="1" max="10" value="5" id="r2" name="r2" />
+                  <output for="r2" id="r2Out">5</output>
+                </label>
+
+                <label>3. Ar priimtumėte į darbą?
+                  <input type="range" min="1" max="10" value="5" id="r3" name="r3" />
+                  <output for="r3" id="r3Out">5</output>
+                </label>
+              </fieldset>
+
+              <button id="submitBtn" type="submit" disabled>Submit</button>
+            </form>
+
+            <section id="resultArea" aria-live="polite"></section>
+
+            <!-- Pop-up pranešimas -->
+            <div id="popup" class="popup hidden" role="alert" aria-hidden="true">
+              <div class="popup-inner">
+                <p>Duomenys pateikti sėkmingai!</p>
+                <button id="popupClose">Uždaryti</button>
+              </div>
+            </div>
+
+            <div id="formDataOutput" class="mt-5 p-3 border rounded" style="display: none; background-color: #f8f9fa;">
+                <h3 style="border-bottom: none; color: #1b3b6f;">Pateikti duomenys:</h3>
+                <ul id="dataList" class="list-unstyled mb-3"></ul>
+                <p id="averageOutput" class="font-weight-bold" style="font-size: 1.2em; color: #afaf0b;"></p>
+            </div>
+            
+        </div>
+        
+        </div>
+
+      </div>
+
+    </section><!-- /Contact Section -->
 
   </main>
 
@@ -532,6 +622,8 @@
     });
   </script>
 
+  <script src="assets/js/custom.js"></script>
+  
 </body>
 
 </html>
