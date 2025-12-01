@@ -29,6 +29,7 @@
   <link href="assets/css/main.css" rel="stylesheet">
   <link href="assets/css/custom.css" rel="stylesheet">
 
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
   <link rel="stylesheet" href="/assets/css/custom.css">
 
 </head>
@@ -57,7 +58,6 @@
       <a href="#" class="twitter"><i class="bi bi-twitter-x"></i></a>
       <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
       <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
-      <a href="#" class="google-plus"><i class="bi bi-skype"></i></a>
       <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></a>
     </div>
 
@@ -68,24 +68,8 @@
         <li><a href="#resume"><i class="bi bi-file-earmark-text navicon"></i> Resume</a></li>
         <li><a href="#portfolio"><i class="bi bi-images navicon"></i> Portfolio</a></li>
         <li><a href="#services"><i class="bi bi-hdd-stack navicon"></i> Services</a></li>
-        <li class="dropdown"><a href="#"><i class="bi bi-menu-button navicon"></i> <span>Dropdown</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
-          <ul>
-            <li><a href="#">Dropdown 1</a></li>
-            <li class="dropdown"><a href="#"><span>Deep Dropdown</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
-              <ul>
-                <li><a href="#">Deep Dropdown 1</a></li>
-                <li><a href="#">Deep Dropdown 2</a></li>
-                <li><a href="#">Deep Dropdown 3</a></li>
-                <li><a href="#">Deep Dropdown 4</a></li>
-                <li><a href="#">Deep Dropdown 5</a></li>
-              </ul>
-            </li>
-            <li><a href="#">Dropdown 2</a></li>
-            <li><a href="#">Dropdown 3</a></li>
-            <li><a href="#">Dropdown 4</a></li>
-          </ul>
-        </li>
         <li><a href="#contact"><i class="bi bi-envelope navicon"></i> Contact</a></li>
+        <li><a href="#game"><i class="bi bi-joystick navicon"></i> Mini Game</a></li>
       </ul>
     </nav>
 
@@ -491,7 +475,7 @@
 
       <!-- Section Title -->
       <div class="container section-title" data-aos="fade-up">
-        <h2>Contact</h2>
+        <h2>Paslaugos</h2>
         <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit</p>
       </div><!-- End Section Title -->
 
@@ -576,6 +560,41 @@
       </div>
 
     </section><!-- /Contact Section -->
+
+            <!-- Game Section -->
+    <section id="game" class="game section light-background">
+      
+      <div class="container section-title" data-aos="fade-up">
+        <h2>Mano Žaidimas</h2>
+        <p>Atminties kortelių žaidimas, sukurtas naudojant HTML, CSS ir JavaScript. Išbandykite savo atmintį!</p>
+      </div><div class="container" data-aos="fade-up" data-aos-delay="100">
+
+        <div class="controls text-center mb-4">
+            <label for="difficulty" class="me-3">Pasirinkite sudėtingumo lygį:</label>
+            <select id="difficulty" class="me-3">
+                <option value="easy">Lengvas (4x3)</option>
+                <option value="hard">Sunkus (6x4)</option>
+            </select>
+            
+            <button id="startButton" class="btn btn-success me-2">Start</button>
+            <button id="resetButton" class="btn btn-danger" disabled>Atnaujinti</button>
+        </div>
+
+        <div id="stats" class="d-flex justify-content-center gap-4 mb-4">
+            <p class="mb-0">Laikas: <span id="timerDisplay">00:00</span></p>
+            <p class="mb-0">Ėjimai: <span id="movesCount">0</span></p>
+            <p class="mb-0">Sutapusios poros: <span id="matchedPairsCount">0</span></p>
+            <p class="mb-0">Geriausias Lengvas: <span id="bestEasy">N/A</span></p>
+            <p class="mb-0">Geriausias Sunkus: <span id="bestHard">N/A</span></p>
+        </div>
+
+        <div id="winMessage" class="hidden alert alert-info text-center" role="alert"></div>
+        
+        <div id="gameBoard" class="board-easy mx-auto">
+            </div>
+      </div>
+      
+    </section><!-- /Game Section -->
 
   </main>
 
