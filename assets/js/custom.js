@@ -28,8 +28,8 @@ document.addEventListener('DOMContentLoaded', () => {
     name: v => /^[A-Za-zĄČĘĖĮŠŲŪаąčęėįšųūž-яА-Я\-\s]+$/.test(v.trim()),
     surname: v => /^[A-Za-zĄČĘĖĮŠŲŪąčęėįšųūžа-яА-Я\-\s]+$/.test(v.trim()),
     email: v => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v),
-    address: v => v.trim().length > 0,
-    phone: v => /^\+370\s6\d{2}\s\d{3}\s\d{2}$/.test(v)
+    phone: v => /^\+370\s6\d{2}\s\d{3}\s\d{2}$/.test(v),
+    address: v => v.trim().length > 0
   };
 
   function setError(field, message) {
