@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="lt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Išmanusis Laikrodis</title>
+    <link rel="stylesheet" href="main.css">
+</head>
+<body>
+    <div class="container">
+        <div class="smartwatch">
+            <!-- Ekranas -->
+            <div class="display">
+                <div class="status-bar">
+                    <span class="signal">📶</span>
+                    <span class="battery">🔋 85%</span>
+                </div>
+                
+                <div class="time-section">
+                    <div class="time" id="time">09:45</div>
+                    <div class="date" id="date">Sausis 15</div>
+                </div>
+                
+                <!-- Valdikliai -->
+                <div class="controls">
+                    <div class="control-item">
+                        <span class="icon">❤️</span>
+                        <span class="label">Pulsas</span>
+                        <span class="value" id="heart-rate">78</span>
+                    </div>
+                    <div class="control-item">
+                        <span class="icon">👟</span>
+                        <span class="label">Žingsniai</span>
+                        <span class="value" id="steps">5,234</span>
+                    </div>
+                    <div class="control-item">
+                        <span class="icon">🌤️</span>
+                        <span class="label">Lauko temp</span>
+                        <span class="value" id="temperature">12.3°C</span>
+                    </div>
+                    <div class="control-item coin-control">
+                        <button class="coin-button" id="coin-btn" onclick="spinRoulette()">🎡 Sukti ruletę</button>
+                    </div>
+                </div>
+                
+                <!-- Meniu -->
+                <div class="menu-section">
+                    <div class="menu-item" data-menu="notifications" onclick="showMenu('notifications')">
+                        🔔 Pranešimai
+                    </div>
+                    <div class="menu-item" data-menu="fitness" onclick="showMenu('fitness')">
+                        💪 Sportas
+                    </div>
+                    <div class="menu-item" data-menu="settings" onclick="showMenu('settings')">
+                        ⚙️ Nustatymai
+                    </div>
+                </div>
+                <!-- Menu content panels (compact, fit inside display) -->
+                <div class="panel-container" style="display:none;">
+                                    <div class="panel-container" style="display:none;">
+                    <div class="panel" id="panel-notifications">
+                        <h4>Pranešimai</h4>
+                        <ul>
+                            <li>📩 Nauja žinutė iš Jonas</li>
+                            <li>📅 Susitikimas 14:00</li>
+                            <li>🔔 Atlikti 10 000 žingsnių</li>
+                        </ul>
+                    </div>
+
+                    <div class="panel" id="panel-fitness">
+                        <h4>Sportas</h4>
+                        <ul>
+                            <li>Šiandien: 5,234 žingsnių</li>
+                            <li>Treniruotė: Bėgimas — 25 min</li>
+                            <li>Sudeginta: <span id="panel-calories">350</span> kcal</li>
+                        </ul>
+                    </div>
+
+                    <div class="panel" id="panel-settings">
+                        <h4>Nustatymai</h4>
+                        <ul>
+                            <li>Ryškumas: Vidutinis</li>
+                            <li>Garaso: Išjungta</li>
+                            <li>Laiko formatas: 24h</li>
+                        </ul>
+                    </div>
+                </div>
+                </div>
+                <!-- Ruletės rezultatas (overlay) -->
+                <div id="roulette-overlay" class="roulette-overlay" style="display:none;">
+                    <div class="wheel" id="wheel"></div>
+                    <div class="pointer"></div>
+                    <div class="roulette-text" id="roulette-result-text"></div>
+                </div>
+            </div>
+            
+            <!-- Šoniniai mygtukai -->
+            <div class="button-left" onclick="previousMenu()">◀</div>
+            <div class="button-right" onclick="nextMenu()">▶</div>
+            <div class="button-center" onclick="toggleMenu()">☰</div>
+        </div>
+        
+        <!-- Ataskaitų sekcija -->
+        <div class="reports-section">
+            <h2>Šiandienos Ataskaitą</h2>
+            <div class="report-card">
+                <h3>Žingsniai</h3>
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 52%"></div>
+                </div>
+                <p id="steps-text">5,234 / 10,000</p>
+            </div>
+            
+            <div class="report-card">
+                <h3>Pulsas</h3>
+                <div class="heart-chart">
+                    <div class="bar" style="height: 60%"></div>
+                    <div class="bar" style="height: 70%"></div>
+                    <div class="bar" style="height: 65%"></div>
+                    <div class="bar" style="height: 75%"></div>
+                    <div class="bar" style="height: 80%"></div>
+                </div>
+                <p>Vidutinis: 72 BPM</p>
+            </div>
+            
+            <div class="report-card">
+                <h3>Miegas</h3>
+                <div class="progress-bar sleep-bar">
+                    <div class="progress-fill sleep-progress-fill" style="width: 50%"></div>
+                </div>
+                <p id="sleep-text">6.5 / 8 val.</p>
+                <div style="font-size:12px;color:#bfefff;margin-top:6px;text-align:center;">Miego trukmė: <span id="sleep-hours">6.5</span> val.</div>
+            </div>
+
+            <div class="report-card">
+                <h3>Kalorijos</h3>
+                <div class="progress-bar calories-bar">
+                    <div class="progress-fill calories-progress-fill" style="width: 40%"></div>
+                </div>
+                <p id="calories-text">350 / 500 kcal</p>
+                <div style="font-size:12px;color:#bfefff;margin-top:6px;text-align:center;">Sudeginta: <span id="calories-value">350</span> kcal</div>
+            </div>
+        </div>
+        
+        <!-- Bottom drawer (hidden by default) -->
+        <div class="bottom-drawer" id="bottom-drawer" aria-hidden="true">
+            <div class="drawer-header">
+                <div class="drawer-title" id="drawer-title">Panel</div>
+                <button class="drawer-close" id="drawer-close">✕</button>
+            </div>
+            <div class="drawer-content">
+                <div class="drawer-panel" id="drawer-notifications">
+                    <h4>Pranešimai</h4>
+                    <ul>
+                        <li>📩 Nauja žinutė iš: Jonas</li>
+                        <li>📅 Susitikimas 14:00</li>
+                        <li>🔔 Atlikti: 10 000 žingsnių</li>
+                    </ul>
+                </div>
+                <div class="drawer-panel" id="drawer-fitness">
+                    <h4>Sportas</h4>
+                    <ul>
+                        <li>Šiandien: <span id="drawer-steps">5,234</span> žingsnių</li>
+                        <li>Treniruotė: Bėgimas — 25 min</li>
+                        <li>kcal: <span id="drawer-calories">350</span> kcal</li>
+                    </ul>
+                </div>
+                <div class="drawer-panel" id="drawer-settings">
+                    <h4>Nustatymai</h4>
+                    <ul>
+                        <li>Ryškumas: Vidutinis</li>
+                        <li>Garsas: Išjungta</li>
+                        <li>Laikrodis: 24h</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="main.js"></script>
+</body>
+</html>
